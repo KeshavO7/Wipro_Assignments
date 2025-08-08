@@ -1,0 +1,31 @@
+package com.example.first_spring_boot_app.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+public class AppController {
+	@GetMapping("/")
+    public String showHomePage() {
+        return "home"; // This will map to /WEB-INF/home.jsp
+    }
+    @GetMapping("/test")
+    public String testPage() {
+        return "test"; // Resolves to /WEB-INF/test.jsp
+    }
+    @PostMapping("/login")
+    public String loginValidate(@RequestParam String username, @RequestParam String password) {
+        System.out.println("Login Attempt: Username = " + username + ", Password = " + password);
+
+        // Simple hardcoded validation (for demo purposes)
+        if ("admin".equals(username) && "1234".equals(password)) {
+            return "redirect:/home";  // redirect to home page on success
+        } else {
+            return "login";  // return back to login page on failure
+        }
+    }
+
+    
+}

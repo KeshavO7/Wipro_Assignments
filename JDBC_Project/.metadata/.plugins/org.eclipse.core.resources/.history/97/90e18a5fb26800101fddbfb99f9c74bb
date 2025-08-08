@@ -1,0 +1,89 @@
+package dao;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import exception.DepartmentNotFoundException;
+import model.Department;
+import util.DBUtil;
+
+public class DepartmentDAO {
+
+    // 1. Add a New Department
+    public void addDepartment(Department dept) throws SQLException {
+        Connection conn = DBUtil.getConnection();
+        String sql = "INSERT INTO department (deptid, deptname, location) VALUES (?, ?, ?)";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, dept.getDeptId());
+        ps.setString(2, dept.getDeptName());
+        ps.setString(3, dept.getLocation());
+        ps.executeUpdate();
+        conn.close();
+    }
+
+    // 2. Get Department by ID
+    public Department getDepartmentById(int id) throws SQLException, DepartmentNotFoundException {
+        Connection conn = DBUtil.getConnection();
+        String sql = "SELECT * FROM department WHERE deptid = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            Department dept = new Department(rs.getInt(1), rs.getString(2), rs.getString(3));
+            conn.close();
+            return dept;
+        } else {
+            conn.close();
+            throw new DepartmentNotFoundException("Department with ID " + id + " not found.");
+        }
+    }
+
+    // 3. Get All Departments
+    public List<Department> getAllDepartments() throws SQLException {
+        List<Department> list = new ArrayList<>();
+        Connection conn = DBUtil.getConnection();
+        String sql = "SELECT * FROM department";
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(sql);
+
+        while (rs.next()) {
+            Department dept = new Department(rs.getInt(1), rs.getString(2), rs.getString(3));
+            list.add(dept);
+        }
+
+        conn.close();
+        return list;
+    }
+
+    // 4. Update Department
+    public boolean updateDepartment(Department dept) throws SQLException {
+        Connection conn = DBUtil.getConnection();
+        String sql = "UPDATE department SET deptname = ?, location = ? WHERE deptid = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, dept.getDeptName());
+        ps.setString(2, dept.getLocation());
+        ps.setInt(3, dept.getDeptId());
+
+        int rows = ps.executeUpdate();
+        conn.close();
+        return rows > 0;
+    }
+
+    // 5. Delete Department by ID
+    public boolean deleteDepartmentById(int id) throws SQLException, DepartmentNotFoundException {
+        Connection conn = DBUtil.getConnection();
+        String sql = "DELETE FROM department WHERE deptid = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, id);
+        int rows = ps.executeUpdate();
+        conn.close();
+
+        if (rows == 0) {
+            throw new DepartmentNotFoundException("Department with ID " + id + " not found.");
+        }
+
+        return true;
+    }
+}

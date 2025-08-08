@@ -1,0 +1,12 @@
+package com.example.ecommerce.com.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.service.annotation.GetExchange;
+
+@Controller
+public class AppController {
+	@GetExchange("/home")
+	public String showHomePage() {
+		return "home";
+	}
+}

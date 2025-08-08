@@ -1,0 +1,44 @@
+package com.example.first_spring_boot_app.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+public class AppController {
+	@GetMapping("/login")
+    public String showLoginPage() {
+        return "login"; 
+    }
+
+    @GetMapping("/")
+    public String showHomePage() {
+        return "home"; 
+    }
+
+    
+    @GetMapping("/test")
+    public String testPage() {
+        return "test"; 
+    }
+
+    
+    @GetMapping("/dashboard")
+    public String showDashboard() {
+        return "dashboard"; 
+    }
+
+    @PostMapping("/login")
+    public String loginValidate(@RequestParam String uname, @RequestParam String psw) {
+        System.out.println("Inside loginValidate: uname=" + uname + ", psw=" + psw);
+
+        if ("admin".equalsIgnoreCase(uname) && "1234".equals(psw)) {
+            System.out.println("User credentials are correct");
+            return "dashboard"; // dashboard.html
+        } else {
+            System.out.println("User credentials are not correct");
+            return "home"; // home.html with error or message
+        }
+    }
+}

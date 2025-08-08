@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "movie.openapi.dev-url",
+    "type": "java.lang.String",
+    "description": "A description for 'movie.openapi.dev-url'"
+  },
+  {
+    "name": "movie.openapi.prod-url",
+    "type": "java.lang.String",
+    "description": "A description for 'movie.openapi.prod-url'"
+  }
+]}

@@ -1,0 +1,13 @@
+package com.example.Movie_Ticket_Booking_System.service;
+
+import java.util.List;
+
+import com.example.Movie_Ticket_Booking_System.entity.Customer;
+
+public interface CustomerService {
+    List<Customer> getAllCustomers();
+    Customer getCustomerById(Long id);
+    Customer createCustomer(Customer customer);
+    Customer updateCustomer(Long id, Customer customer);
+    void deleteCustomer(Long id);
+}

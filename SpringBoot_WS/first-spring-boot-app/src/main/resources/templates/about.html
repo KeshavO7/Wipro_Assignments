@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>About</title>
+</head>
+<body>
+		
+	<div>
+	    <form th:action="@{/}" method="get" style="display:inline;">
+	        <button type="submit">Home</button>
+	    </form>
+
+	    <form th:action="@{/dashboard}" method="get" style="display:inline;">
+	        <button type="submit">Dashboard</button>
+	    </form>
+
+	    <form th:action="@{/contact}" method="get" style="display:inline;">
+	        <button type="submit">Contact</button>
+	    </form>
+	</div>
+
+		
+    <h2>About Me</h2>
+
+    <p>My name is <strong>Keshav Choudhary</strong>. I recently graduated from <strong>JIS College of Engineering</strong> with a degree in <strong>Computer Science and Engineering</strong>.<br> I am passionate about technology and eager to apply my skills in real-world software development projects.</p>
+
+    
+    
+
+</body>
+</html>

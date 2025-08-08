@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+
+    <h2>Welcome to the Dashboard!</h2>
+    <p>You have successfully logged in.</p>
+	
+	<!-- About Page Button -->
+	    <form th:action="@{/about}" method="get">
+	        <button type="submit">About</button>
+	    </form>
+</body>
+</html>

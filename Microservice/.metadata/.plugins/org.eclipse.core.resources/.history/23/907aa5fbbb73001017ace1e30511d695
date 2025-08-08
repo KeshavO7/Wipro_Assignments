@@ -1,0 +1,44 @@
+package com.example.booking_service.controller;
+
+import com.example.booking_service.entity.Booking;
+import com.example.booking_service.service.BookingService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/bookings")
+public class BookingController {
+
+    private final BookingService bookingService;
+
+    // Constructor-based Dependency Injection (Recommended for testing & immutability)
+    public BookingController(BookingService bookingService) {
+        this.bookingService = bookingService;
+    }
+
+    @PostMapping
+    public Booking createBooking(@RequestBody Booking booking) {
+        return bookingService.createBooking(booking);
+    }
+
+    @GetMapping("/{id}")
+    public Booking getBookingById(@PathVariable Long id) {
+        return bookingService.getBookingById(id);
+    }
+
+    @GetMapping
+    public List<Booking> getAllBookings() {
+        return bookingService.getAllBookings();
+    }
+
+    @PutMapping("/{id}")
+    public Booking updateBooking(@PathVariable Long id, @RequestBody Booking booking) {
+        return bookingService.updateBooking(id, booking);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteBooking(@PathVariable Long id) {
+        bookingService.deleteBooking(id);
+    }
+}

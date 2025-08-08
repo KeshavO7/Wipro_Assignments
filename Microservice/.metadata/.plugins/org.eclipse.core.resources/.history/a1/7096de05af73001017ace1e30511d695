@@ -1,0 +1,12 @@
+package com.example.booking_service.service;
+import java.util.List;
+
+import com.example.booking_service.entity.Booking;
+
+public interface BookingService {
+    Booking createBooking(Booking booking);
+    Booking getBookingById(Long id);
+    List<Booking> getAllBookings();
+    Booking updateBooking(Long id, Booking booking);
+    void deleteBooking(Long id);
+}

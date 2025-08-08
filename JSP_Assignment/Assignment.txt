@@ -1,0 +1,14 @@
+Servlet Assignment:-
+1.
+a. Create a jsp file with form having name and password field and submit , reset button(Action should be given)
+b. create a another jsp file which will print name and password
+
+2. 
+a. Create a jsp file with form having name and password field and submit , reset button(Action should be given)
+b. Create a another jsp LoginJsp which will check user as admin and password is wipro , if true redirect to Success 
+	Jsp page else redirect to Fail.jsp
+
+3. 
+a. Create a jsp file with form having name and password field and submit , reset button(Action should be given)
+b. Create a another jsp file FirstJsp store user and password in session  and give a link, and clicking on link it goes to ScondJsp and display it on SecondJsp 
+

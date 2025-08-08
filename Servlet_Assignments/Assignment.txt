@@ -1,0 +1,15 @@
+Servlet Assignment:-
+1.
+a. Create a html file with form having name and password field and submit , reset button(Action should be given)
+b. create a servlet Servlet1 which will print name and password
+
+2. 
+a. Create a html file with form having name and password field and submit , reset button(Action should be given)
+b. Create a servlet LoginServlet which will check user as admin and password is wipro , if true redirect to Success 
+	Servlet else redirect to Fail.html(Use Request Dispatcher)
+
+3. 
+a. Create a html file with form having name and password field and submit , reset button(Action should be given)
+b. Create a FirstServlet store user and password in session  and give a link to go to SecondServlet and display it on       	SecondServlet
+
+

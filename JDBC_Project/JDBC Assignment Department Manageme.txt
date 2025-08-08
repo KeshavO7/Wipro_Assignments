@@ -1,0 +1,67 @@
+JDBC Assignment: Department Management System
+
+Objective:
+Design and implement a Java console application using JDBC to manage Department data in a database. The application must follow layered architecture using the following packages:
+
+model, util, exception, dao, service, client
+
+Fields in department:
+deptId,deptName,location etc.
+
+Required Packages and Responsibilities
+Package	Responsibility
+model	POJO class representing the Department entity
+util	JDBC DB connection logic
+exception	Custom exception for missing departments
+dao	Interface and implementation for DB operations
+service	Business logic that interacts with DAO layer
+client	Main class with menu-driven code to test operations
+
+Operations to Implement (with layer usage)
+1. Add a New Department
+Function: Insert a new department into the database.
+
+Flow:
+client → service → dao → util
+
+JDBC Instruction: Use PreparedStatement with INSERT.
+
+2. Get Department by ID
+Function: Retrieve a department's details using ID.
+
+Flow:
+client → service → dao → util
+
+Exception Handling:
+
+If department not found, throw DepartmentNotFoundException from the exception package.
+
+JDBC Instruction: Use PreparedStatement with SELECT * WHERE id = ?.
+
+3. Get All Departments
+Function: Display all departments.
+
+Flow:
+client → service → dao → util
+
+JDBC Instruction: Use Statement or PreparedStatement with SELECT *.
+
+4. Update Department
+Function: Update a department’s name and location by its ID.
+
+Flow:
+client → service → dao → util
+
+JDBC Instruction: Use PreparedStatement with UPDATE department SET name=?, location=? WHERE id=?.
+
+5. Delete Department by ID
+Function: Delete a department using its ID.
+
+Flow:
+client → service → dao → util
+
+Exception Handling:
+
+If department not found, throw DepartmentNotFoundException.
+
+JDBC Instruction: Use PreparedStatement with DELETE FROM department WHERE id = ?.

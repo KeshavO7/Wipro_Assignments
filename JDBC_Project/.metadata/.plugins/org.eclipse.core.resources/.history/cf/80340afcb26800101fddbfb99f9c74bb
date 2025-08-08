@@ -1,0 +1,32 @@
+package service;
+
+import dao.DepartmentDAO;
+import exception.DepartmentNotFoundException;
+import model.Department;
+
+import java.sql.SQLException;
+import java.util.List;
+
+public class DepartmentService {
+    private DepartmentDAO dao = new DepartmentDAO();
+
+    public void addDepartment(Department dept) throws SQLException {
+        dao.addDepartment(dept);
+    }
+
+    public Department getDepartmentById(int id) throws SQLException, DepartmentNotFoundException {
+        return dao.getDepartmentById(id);
+    }
+
+    public List<Department> getAllDepartments() throws SQLException {
+        return dao.getAllDepartments();
+    }
+
+    public boolean updateDepartment(Department dept) throws SQLException {
+        return dao.updateDepartment(dept);
+    }
+
+    public boolean deleteDepartmentById(int id) throws SQLException, DepartmentNotFoundException {
+        return dao.deleteDepartmentById(id);
+    }
+}
